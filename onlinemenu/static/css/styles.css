@@ -1,0 +1,88 @@
+.card-body {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+
+#tb1 {
+    border-radius: 30px;
+    background-color: bisque;
+}
+
+
+
+#tablediv {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.imgdiv {
+    padding-left: 400px;
+}
+
+.catname {
+    width: 200px;
+}
+
+.card-body>div {
+    padding: 5px;
+}
+
+.img {
+    width: 500px;
+    background-color: aqua;
+}
+
+#catimg {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid whitesmoke;
+
+
+}
+
+body {
+
+    background: #F2CB3E;
+    background: -webkit-linear-gradient(top left, #F2CB3E, #EFE008);
+    background: -moz-linear-gradient(top left, #F2CB3E, #EFE008);
+    background: linear-gradient(to bottom right, #F2CB3E, #EFE008);
+
+}
+
+#accordion {
+    position: relative;
+    padding-bottom: 20px;
+    padding-top: 5px;
+
+
+
+}
+
+#heading {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#main {
+    width: 1300px;
+    border: 2px solid burlywood;
+    background-color: white;
+}
+
+#catlink {
+    text-decoration: none;
+}
+
+#catnameli {
+
+    color: black;
+    font-family: 'Roboto', sans-serif;
+
+}

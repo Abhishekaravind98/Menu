@@ -1,0 +1,43 @@
+<div id="tablediv">
+{% for i in cat.subcategory_set.all %}
+<table id="tb2">   
+    <tr class="menubox">
+        
+        <div class="" style="width: 18rem;">
+            <td class="">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a id="catlink" data-parent="accordion" data-toggle="collapse" aria-expanded="false" aria-controls="{{ i.id }}" href="#1{{ i.id }}"><h5 id="catnameli">{{ i.name }}</h5></a></li>
+                </ul>
+            </td>
+        </div>
+        
+    </tr>
+    <tr>
+        <td id="tb2">
+            
+            <div class="collapse card" style="width: 18rem;" id="1{{ i.id }}" >
+                {% if cat.id %}
+                {% for food in i.dish_set.all %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item col-sm-8" > {{ food.name }} <img id="catimg" src="{{ food.images.url }}"/></li>
+                </ul>
+                {% endfor %}
+                {% else %}
+                {% for food in foods %}
+                {{ food.dish }}
+                {% endfor %}
+                
+                {% endif %}
+            </div>
+            
+            
+    </tr>
+</table>
+{% endfor %}
+</div>
+
+
+
+
+
+
