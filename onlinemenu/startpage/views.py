@@ -3,20 +3,25 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .serialzers import CategorySerializer,SubCategorySerializer, DishSerializer
 from rest_framework.response import Response
-from .models import Category, SubCategory, Dish
+from .models import Category, SubCategory, Dish, WebResponse 
 from rest_framework.views import APIView
 from rest_framework import status
 from django.db.models import F
+from .exceptions import testException
 
 
-class WebResponse(dict):
-    def __init__(self, status=200, message='success', data=None):
-        dict.__init__(self, status=status, message=message, data=data)
+# class WebResponse(dict):
+#     def __init__(self, status=200, message='success', data=None):
+#         dict.__init__(self, status=status, message=message, data=data)
+
+class WebError(dict):
+    def __init__(self, status=404, message="not found"):
+        dict.__init__(self, status=status, message=message)
 
 class CategoryList(APIView):
 
     def get(self, request, format=None):
-        category = Category.objects.values('name','images','status')
+        category = Category.objects.values('id','name','images','status')
         # return Response(WebResponse(status=404, data=categories), status=status.HTTP_200_OK)
         return Response(WebResponse( data=category))
 
@@ -64,7 +69,10 @@ class DishList(APIView):
 class DishDetail(APIView):
 
     def get(self, request, pk):
-        dish = Dish.objects.filter(pk=pk).values().annotate(category_name=F('category__name'))
+        dish = Dish.objects.filter(pk=pk).exclude().values().annotate(category_name=F('category__name'))
+        # if :
+        #     return Response(WebResponse(status=status.HTTP_404_NOT_FOUND))
+        if (len(dish)==0):raise testException()
         return Response(WebResponse( data=dish))
 
     def put(self, request, pk):
