@@ -16,7 +16,7 @@ class WebResponse(dict):
 class CategoryList(APIView):
 
     def get(self, request, format=None):
-        category = Category.objects.all().values()
+        category = Category.objects.values('name','images','status')
         # return Response(WebResponse(status=404, data=categories), status=status.HTTP_200_OK)
         return Response(WebResponse( data=category))
 
